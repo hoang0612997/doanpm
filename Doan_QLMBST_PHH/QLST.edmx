@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QL_SimTheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="Makh" />
+          </Key>
+          <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tenkh" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoDienThoai" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MuaBanSim">
+          <Key>
+            <PropertyRef Name="Makh" />
+            <PropertyRef Name="MaS" />
+          </Key>
+          <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayMuaBan" Type="date" />
+        </EntityType>
+        <EntityType Name="MuaBanThe">
+          <Key>
+            <PropertyRef Name="Makh" />
+            <PropertyRef Name="MaThe" />
+          </Key>
+          <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaThe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayMuaBan" Type="date" />
+          <Property Name="SoLuong" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="NhaMang_KM">
+          <Key>
+            <PropertyRef Name="TenNhaMang" />
+          </Key>
+          <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CTKM" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Sim">
+          <Key>
+            <PropertyRef Name="MaS" />
+          </Key>
+          <Property Name="MaS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayKichHoat" Type="date" />
+          <Property Name="SoSim" Type="varchar" MaxLength="10" />
+          <Property Name="LoaiSim" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiaSim" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" />
+          <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="taikhoan">
+          <Key>
+            <PropertyRef Name="taikhoan" />
+          </Key>
+          <Property Name="taikhoan" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="matkhau" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="The">
+          <Key>
+            <PropertyRef Name="MaThe" />
+          </Key>
+          <Property Name="MaThe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenhGia" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SoLuong" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_MuaBanSim_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Makh" />
+            </Principal>
+            <Dependent Role="MuaBanSim">
+              <PropertyRef Name="Makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanSim_Sim1">
+          <End Role="Sim" Type="Self.Sim" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sim">
+              <PropertyRef Name="MaS" />
+            </Principal>
+            <Dependent Role="MuaBanSim">
+              <PropertyRef Name="MaS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanThe_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Makh" />
+            </Principal>
+            <Dependent Role="MuaBanThe">
+              <PropertyRef Name="Makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanThe_The1">
+          <End Role="The" Type="Self.The" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="The">
+              <PropertyRef Name="MaThe" />
+            </Principal>
+            <Dependent Role="MuaBanThe">
+              <PropertyRef Name="MaThe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sim_NhaMang_KM">
+          <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sim" Type="Self.Sim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaMang_KM">
+              <PropertyRef Name="TenNhaMang" />
+            </Principal>
+            <Dependent Role="Sim">
+              <PropertyRef Name="TenNhaMang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_The_NhaMang_KM">
+          <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="The" Type="Self.The" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaMang_KM">
+              <PropertyRef Name="TenNhaMang" />
+            </Principal>
+            <Dependent Role="The">
+              <PropertyRef Name="TenNhaMang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_SimTheModelStoreContainer">
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MuaBanSim" EntityType="Self.MuaBanSim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MuaBanThe" EntityType="Self.MuaBanThe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaMang_KM" EntityType="Self.NhaMang_KM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sim" EntityType="Self.Sim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="The" EntityType="Self.The" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MuaBanSim_KhachHang" Association="Self.FK_MuaBanSim_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="MuaBanSim" EntitySet="MuaBanSim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanSim_Sim1" Association="Self.FK_MuaBanSim_Sim1">
+            <End Role="Sim" EntitySet="Sim" />
+            <End Role="MuaBanSim" EntitySet="MuaBanSim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanThe_KhachHang" Association="Self.FK_MuaBanThe_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="MuaBanThe" EntitySet="MuaBanThe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanThe_The1" Association="Self.FK_MuaBanThe_The1">
+            <End Role="The" EntitySet="The" />
+            <End Role="MuaBanThe" EntitySet="MuaBanThe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sim_NhaMang_KM" Association="Self.FK_Sim_NhaMang_KM">
+            <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+            <End Role="Sim" EntitySet="Sim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_The_NhaMang_KM" Association="Self.FK_The_NhaMang_KM">
+            <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+            <End Role="The" EntitySet="The" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QL_SimTheModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="Makh" />
+          </Key>
+          <Property Name="Makh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tenkh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MuaBanSims" Relationship="Self.FK_MuaBanSim_KhachHang" FromRole="KhachHang" ToRole="MuaBanSim" />
+          <NavigationProperty Name="MuaBanThes" Relationship="Self.FK_MuaBanThe_KhachHang" FromRole="KhachHang" ToRole="MuaBanThe" />
+        </EntityType>
+        <EntityType Name="MuaBanSim">
+          <Key>
+            <PropertyRef Name="Makh" />
+            <PropertyRef Name="MaS" />
+          </Key>
+          <Property Name="Makh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NgayMuaBan" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK_MuaBanSim_KhachHang" FromRole="MuaBanSim" ToRole="KhachHang" />
+          <NavigationProperty Name="Sim" Relationship="Self.FK_MuaBanSim_Sim1" FromRole="MuaBanSim" ToRole="Sim" />
+        </EntityType>
+        <EntityType Name="MuaBanThe">
+          <Key>
+            <PropertyRef Name="Makh" />
+            <PropertyRef Name="MaThe" />
+          </Key>
+          <Property Name="Makh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaThe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NgayMuaBan" Type="DateTime" Precision="0" />
+          <Property Name="SoLuong" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK_MuaBanThe_KhachHang" FromRole="MuaBanThe" ToRole="KhachHang" />
+          <NavigationProperty Name="The" Relationship="Self.FK_MuaBanThe_The1" FromRole="MuaBanThe" ToRole="The" />
+        </EntityType>
+        <EntityType Name="NhaMang_KM">
+          <Key>
+            <PropertyRef Name="TenNhaMang" />
+          </Key>
+          <Property Name="TenNhaMang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CTKM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sims" Relationship="Self.FK_Sim_NhaMang_KM" FromRole="NhaMang_KM" ToRole="Sim" />
+          <NavigationProperty Name="Thes" Relationship="Self.FK_The_NhaMang_KM" FromRole="NhaMang_KM" ToRole="The" />
+        </EntityType>
+        <EntityType Name="Sim">
+          <Key>
+            <PropertyRef Name="MaS" />
+          </Key>
+          <Property Name="MaS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenNhaMang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayKichHoat" Type="DateTime" Precision="0" />
+          <Property Name="SoSim" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LoaiSim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiaSim" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GiaNhap" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="MuaBanSims" Relationship="Self.FK_MuaBanSim_Sim1" FromRole="Sim" ToRole="MuaBanSim" />
+          <NavigationProperty Name="NhaMang_KM" Relationship="Self.FK_Sim_NhaMang_KM" FromRole="Sim" ToRole="NhaMang_KM" />
+        </EntityType>
+        <EntityType Name="taikhoan">
+          <Key>
+            <PropertyRef Name="taikhoan1" />
+          </Key>
+          <Property Name="taikhoan1" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="The">
+          <Key>
+            <PropertyRef Name="MaThe" />
+          </Key>
+          <Property Name="MaThe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenNhaMang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MenhGia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SoLuong" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GiaNhap" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="MuaBanThes" Relationship="Self.FK_MuaBanThe_The1" FromRole="The" ToRole="MuaBanThe" />
+          <NavigationProperty Name="NhaMang_KM" Relationship="Self.FK_The_NhaMang_KM" FromRole="The" ToRole="NhaMang_KM" />
+        </EntityType>
+        <Association Name="FK_MuaBanSim_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Makh" />
+            </Principal>
+            <Dependent Role="MuaBanSim">
+              <PropertyRef Name="Makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanThe_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Makh" />
+            </Principal>
+            <Dependent Role="MuaBanThe">
+              <PropertyRef Name="Makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanSim_Sim1">
+          <End Role="Sim" Type="Self.Sim" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sim">
+              <PropertyRef Name="MaS" />
+            </Principal>
+            <Dependent Role="MuaBanSim">
+              <PropertyRef Name="MaS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuaBanThe_The1">
+          <End Role="The" Type="Self.The" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="The">
+              <PropertyRef Name="MaThe" />
+            </Principal>
+            <Dependent Role="MuaBanThe">
+              <PropertyRef Name="MaThe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sim_NhaMang_KM">
+          <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sim" Type="Self.Sim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaMang_KM">
+              <PropertyRef Name="TenNhaMang" />
+            </Principal>
+            <Dependent Role="Sim">
+              <PropertyRef Name="TenNhaMang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_The_NhaMang_KM">
+          <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="The" Type="Self.The" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaMang_KM">
+              <PropertyRef Name="TenNhaMang" />
+            </Principal>
+            <Dependent Role="The">
+              <PropertyRef Name="TenNhaMang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_SimTheEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="MuaBanSims" EntityType="Self.MuaBanSim" />
+          <EntitySet Name="MuaBanThes" EntityType="Self.MuaBanThe" />
+          <EntitySet Name="NhaMang_KM" EntityType="Self.NhaMang_KM" />
+          <EntitySet Name="Sims" EntityType="Self.Sim" />
+          <EntitySet Name="taikhoans" EntityType="Self.taikhoan" />
+          <EntitySet Name="Thes" EntityType="Self.The" />
+          <AssociationSet Name="FK_MuaBanSim_KhachHang" Association="Self.FK_MuaBanSim_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="MuaBanSim" EntitySet="MuaBanSims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanThe_KhachHang" Association="Self.FK_MuaBanThe_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="MuaBanThe" EntitySet="MuaBanThes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanSim_Sim1" Association="Self.FK_MuaBanSim_Sim1">
+            <End Role="Sim" EntitySet="Sims" />
+            <End Role="MuaBanSim" EntitySet="MuaBanSims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuaBanThe_The1" Association="Self.FK_MuaBanThe_The1">
+            <End Role="The" EntitySet="Thes" />
+            <End Role="MuaBanThe" EntitySet="MuaBanThes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sim_NhaMang_KM" Association="Self.FK_Sim_NhaMang_KM">
+            <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+            <End Role="Sim" EntitySet="Sims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_The_NhaMang_KM" Association="Self.FK_The_NhaMang_KM">
+            <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+            <End Role="The" EntitySet="Thes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QL_SimTheModelStoreContainer" CdmEntityContainer="QL_SimTheEntities">
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QL_SimTheModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="Makh" ColumnName="Makh" />
+                <ScalarProperty Name="Tenkh" ColumnName="Tenkh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MuaBanSims">
+            <EntityTypeMapping TypeName="QL_SimTheModel.MuaBanSim">
+              <MappingFragment StoreEntitySet="MuaBanSim">
+                <ScalarProperty Name="Makh" ColumnName="Makh" />
+                <ScalarProperty Name="MaS" ColumnName="MaS" />
+                <ScalarProperty Name="NgayMuaBan" ColumnName="NgayMuaBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MuaBanThes">
+            <EntityTypeMapping TypeName="QL_SimTheModel.MuaBanThe">
+              <MappingFragment StoreEntitySet="MuaBanThe">
+                <ScalarProperty Name="Makh" ColumnName="Makh" />
+                <ScalarProperty Name="MaThe" ColumnName="MaThe" />
+                <ScalarProperty Name="NgayMuaBan" ColumnName="NgayMuaBan" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaMang_KM">
+            <EntityTypeMapping TypeName="QL_SimTheModel.NhaMang_KM">
+              <MappingFragment StoreEntitySet="NhaMang_KM">
+                <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+                <ScalarProperty Name="CTKM" ColumnName="CTKM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sims">
+            <EntityTypeMapping TypeName="QL_SimTheModel.Sim">
+              <MappingFragment StoreEntitySet="Sim">
+                <ScalarProperty Name="MaS" ColumnName="MaS" />
+                <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+                <ScalarProperty Name="NgayKichHoat" ColumnName="NgayKichHoat" />
+                <ScalarProperty Name="SoSim" ColumnName="SoSim" />
+                <ScalarProperty Name="LoaiSim" ColumnName="LoaiSim" />
+                <ScalarProperty Name="GiaSim" ColumnName="GiaSim" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taikhoans">
+            <EntityTypeMapping TypeName="QL_SimTheModel.taikhoan">
+              <MappingFragment StoreEntitySet="taikhoan">
+                <ScalarProperty Name="taikhoan1" ColumnName="taikhoan" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thes">
+            <EntityTypeMapping TypeName="QL_SimTheModel.The">
+              <MappingFragment StoreEntitySet="The">
+                <ScalarProperty Name="MaThe" ColumnName="MaThe" />
+                <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+                <ScalarProperty Name="MenhGia" ColumnName="MenhGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

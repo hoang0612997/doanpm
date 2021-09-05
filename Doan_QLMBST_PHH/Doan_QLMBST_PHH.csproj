@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1EA83F4-58F0-4AF0-B124-C844F6B3DFFC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Doan_QLMBST_PHH</RootNamespace>
+    <AssemblyName>Doan_QLMBST_PHH</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDangNhap.Designer.cs">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMBSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMBSim.Designer.cs">
+      <DependentUpon>frmMBSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMuaBanThe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMuaBanThe.Designer.cs">
+      <DependentUpon>frmMuaBanThe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSim.Designer.cs">
+      <DependentUpon>frmSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThe.Designer.cs">
+      <DependentUpon>frmThe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongKeSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongKeSim.Designer.cs">
+      <DependentUpon>frmThongKeSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongKeThe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongKeThe.Designer.cs">
+      <DependentUpon>frmThongKeThe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTKiemKHMB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTKiemKHMB.Designer.cs">
+      <DependentUpon>frmTKiemKHMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Khachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Khachhang.Designer.cs">
+      <DependentUpon>frm_Khachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MuaBanSim.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MuaBanThe.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhaMang_KM.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLST.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="rpThongkeSim.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpThongkeSim.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpThongkeThe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpThongkeThe.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Sim.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="taikhoan.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="The.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMBSim.resx">
+      <DependentUpon>frmMBSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMuaBanThe.resx">
+      <DependentUpon>frmMuaBanThe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSim.resx">
+      <DependentUpon>frmSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThe.resx">
+      <DependentUpon>frmThe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKeSim.resx">
+      <DependentUpon>frmThongKeSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKeThe.resx">
+      <DependentUpon>frmThongKeThe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTKiemKHMB.resx">
+      <DependentUpon>frmTKiemKHMB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Khachhang.resx">
+      <DependentUpon>frm_Khachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="rpThongkeSim.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpThongkeSim.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpThongkeThe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpThongkeThe.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="QLST.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLST.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QLST.edmx.diagram">
+      <DependentUpon>QLST.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\add-40-16.png" />
+    <Content Include="Image\add-40-32.png" />
+    <Content Include="Image\bill-10-32.png" />
+    <Content Include="Image\bill-26-32.png" />
+    <Content Include="Image\bill-3-32.png" />
+    <Content Include="Image\bill-8-32.png" />
+    <Content Include="Image\buy-sign-32.png" />
+    <Content Include="Image\card-6-32.png" />
+    <Content Include="Image\delete-84-16.png" />
+    <Content Include="Image\delete-84-32.png" />
+    <Content Include="Image\file-statistical-report-32.png" />
+    <Content Include="Image\Hình-phong-cảnh-nông-thôn-Anime.jpg" />
+    <Content Include="Image\images.jpg" />
+    <Content Include="Image\information-28-32.png" />
+    <Content Include="Image\ios-log-out-32.png" />
+    <Content Include="Image\log-in-4-32.png" />
+    <Content Include="Image\pngtree-cartoon-background-rainbow-sky-green-meadow-city-factory-image_6282.jpg" />
+    <Content Include="Image\product-introduction-32.png" />
+    <Content Include="Image\repair-9-16.png" />
+    <Content Include="Image\repair-9-32.png" />
+    <Content Include="Image\save-32-32.png" />
+    <Content Include="Image\search-156-16.png" />
+    <Content Include="Image\search-156-32.png" />
+    <Content Include="Image\search-159-32.png" />
+    <Content Include="Image\sim-card-1-32.png" />
+    <Content Include="Image\st2.jpg" />
+    <Content Include="Image\statistical-chart-16.png" />
+    <Content Include="Image\statistical-chart-32.png" />
+    <Content Include="Image\statistical-table-1-32.png" />
+    <Content Include="Image\sua.png" />
+    <Content Include="Image\swarm-exit-safely-16.png" />
+    <Content Include="Image\swarm-exit-safely-32.png" />
+    <Content Include="Image\them.png" />
+    <Content Include="Image\tick-11-32.png" />
+    <Content Include="Image\to-update-5-32.png" />
+    <Content Include="Image\turn-out-16.png" />
+    <Content Include="Image\turn-out-32.png" />
+    <Content Include="Image\xoa.png" />
+    <Content Include="QLST.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLST.edmx</DependentUpon>
+      <LastGenOutput>QLST.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLST.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLST.edmx</DependentUpon>
+      <LastGenOutput>QLST.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

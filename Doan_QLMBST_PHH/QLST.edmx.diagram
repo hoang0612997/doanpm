@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="708190edd357411594e8a116d770f5fd" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_SimTheModel.KhachHang" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.MuaBanSim" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.MuaBanThe" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.NhaMang_KM" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.Sim" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.taikhoan" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SimTheModel.The" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="QL_SimTheModel.FK_MuaBanSim_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SimTheModel.FK_MuaBanThe_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SimTheModel.FK_MuaBanSim_Sim1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SimTheModel.FK_MuaBanThe_The1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SimTheModel.FK_Sim_NhaMang_KM" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SimTheModel.FK_The_NhaMang_KM" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

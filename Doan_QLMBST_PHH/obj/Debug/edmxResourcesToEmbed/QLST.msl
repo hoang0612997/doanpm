@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_SimTheModelStoreContainer" CdmEntityContainer="QL_SimTheEntities">
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="QL_SimTheModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="Makh" ColumnName="Makh" />
+          <ScalarProperty Name="Tenkh" ColumnName="Tenkh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MuaBanSims">
+      <EntityTypeMapping TypeName="QL_SimTheModel.MuaBanSim">
+        <MappingFragment StoreEntitySet="MuaBanSim">
+          <ScalarProperty Name="Makh" ColumnName="Makh" />
+          <ScalarProperty Name="MaS" ColumnName="MaS" />
+          <ScalarProperty Name="NgayMuaBan" ColumnName="NgayMuaBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MuaBanThes">
+      <EntityTypeMapping TypeName="QL_SimTheModel.MuaBanThe">
+        <MappingFragment StoreEntitySet="MuaBanThe">
+          <ScalarProperty Name="Makh" ColumnName="Makh" />
+          <ScalarProperty Name="MaThe" ColumnName="MaThe" />
+          <ScalarProperty Name="NgayMuaBan" ColumnName="NgayMuaBan" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaMang_KM">
+      <EntityTypeMapping TypeName="QL_SimTheModel.NhaMang_KM">
+        <MappingFragment StoreEntitySet="NhaMang_KM">
+          <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+          <ScalarProperty Name="CTKM" ColumnName="CTKM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sims">
+      <EntityTypeMapping TypeName="QL_SimTheModel.Sim">
+        <MappingFragment StoreEntitySet="Sim">
+          <ScalarProperty Name="MaS" ColumnName="MaS" />
+          <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+          <ScalarProperty Name="NgayKichHoat" ColumnName="NgayKichHoat" />
+          <ScalarProperty Name="SoSim" ColumnName="SoSim" />
+          <ScalarProperty Name="LoaiSim" ColumnName="LoaiSim" />
+          <ScalarProperty Name="GiaSim" ColumnName="GiaSim" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taikhoans">
+      <EntityTypeMapping TypeName="QL_SimTheModel.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="taikhoan1" ColumnName="taikhoan" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thes">
+      <EntityTypeMapping TypeName="QL_SimTheModel.The">
+        <MappingFragment StoreEntitySet="The">
+          <ScalarProperty Name="MaThe" ColumnName="MaThe" />
+          <ScalarProperty Name="TenNhaMang" ColumnName="TenNhaMang" />
+          <ScalarProperty Name="MenhGia" ColumnName="MenhGia" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

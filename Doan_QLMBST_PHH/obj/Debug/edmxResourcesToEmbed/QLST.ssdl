@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_SimTheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="Makh" />
+    </Key>
+    <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tenkh" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MuaBanSim">
+    <Key>
+      <PropertyRef Name="Makh" />
+      <PropertyRef Name="MaS" />
+    </Key>
+    <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayMuaBan" Type="date" />
+  </EntityType>
+  <EntityType Name="MuaBanThe">
+    <Key>
+      <PropertyRef Name="Makh" />
+      <PropertyRef Name="MaThe" />
+    </Key>
+    <Property Name="Makh" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaThe" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayMuaBan" Type="date" />
+    <Property Name="SoLuong" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="NhaMang_KM">
+    <Key>
+      <PropertyRef Name="TenNhaMang" />
+    </Key>
+    <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CTKM" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Sim">
+    <Key>
+      <PropertyRef Name="MaS" />
+    </Key>
+    <Property Name="MaS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayKichHoat" Type="date" />
+    <Property Name="SoSim" Type="varchar" MaxLength="10" />
+    <Property Name="LoaiSim" Type="nvarchar" MaxLength="50" />
+    <Property Name="GiaSim" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" />
+    <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="taikhoan">
+    <Key>
+      <PropertyRef Name="taikhoan" />
+    </Key>
+    <Property Name="taikhoan" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="matkhau" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="The">
+    <Key>
+      <PropertyRef Name="MaThe" />
+    </Key>
+    <Property Name="MaThe" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenNhaMang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MenhGia" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="SoLuong" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK_MuaBanSim_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Makh" />
+      </Principal>
+      <Dependent Role="MuaBanSim">
+        <PropertyRef Name="Makh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuaBanSim_Sim1">
+    <End Role="Sim" Type="Self.Sim" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuaBanSim" Type="Self.MuaBanSim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim">
+        <PropertyRef Name="MaS" />
+      </Principal>
+      <Dependent Role="MuaBanSim">
+        <PropertyRef Name="MaS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuaBanThe_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Makh" />
+      </Principal>
+      <Dependent Role="MuaBanThe">
+        <PropertyRef Name="Makh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MuaBanThe_The1">
+    <End Role="The" Type="Self.The" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuaBanThe" Type="Self.MuaBanThe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="The">
+        <PropertyRef Name="MaThe" />
+      </Principal>
+      <Dependent Role="MuaBanThe">
+        <PropertyRef Name="MaThe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_NhaMang_KM">
+    <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sim" Type="Self.Sim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaMang_KM">
+        <PropertyRef Name="TenNhaMang" />
+      </Principal>
+      <Dependent Role="Sim">
+        <PropertyRef Name="TenNhaMang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_The_NhaMang_KM">
+    <End Role="NhaMang_KM" Type="Self.NhaMang_KM" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="The" Type="Self.The" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaMang_KM">
+        <PropertyRef Name="TenNhaMang" />
+      </Principal>
+      <Dependent Role="The">
+        <PropertyRef Name="TenNhaMang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_SimTheModelStoreContainer">
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MuaBanSim" EntityType="Self.MuaBanSim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MuaBanThe" EntityType="Self.MuaBanThe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhaMang_KM" EntityType="Self.NhaMang_KM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim" EntityType="Self.Sim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="The" EntityType="Self.The" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MuaBanSim_KhachHang" Association="Self.FK_MuaBanSim_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="MuaBanSim" EntitySet="MuaBanSim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuaBanSim_Sim1" Association="Self.FK_MuaBanSim_Sim1">
+      <End Role="Sim" EntitySet="Sim" />
+      <End Role="MuaBanSim" EntitySet="MuaBanSim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuaBanThe_KhachHang" Association="Self.FK_MuaBanThe_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="MuaBanThe" EntitySet="MuaBanThe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MuaBanThe_The1" Association="Self.FK_MuaBanThe_The1">
+      <End Role="The" EntitySet="The" />
+      <End Role="MuaBanThe" EntitySet="MuaBanThe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_NhaMang_KM" Association="Self.FK_Sim_NhaMang_KM">
+      <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+      <End Role="Sim" EntitySet="Sim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_The_NhaMang_KM" Association="Self.FK_The_NhaMang_KM">
+      <End Role="NhaMang_KM" EntitySet="NhaMang_KM" />
+      <End Role="The" EntitySet="The" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
